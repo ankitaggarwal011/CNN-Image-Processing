@@ -34,7 +34,7 @@ import os.path
 import warnings
 
 #Ignore warnings
-warnings.filterwarnings("ignore")
+# warnings.filterwarnings("ignore")
 
 class cnnimg:
     def __init__(self):
@@ -43,16 +43,16 @@ class cnnimg:
         return
 
     ##Helper Functions start
-    def f(self, x, t):
+    def f(self, x, t, Ib, Bu, tempA):
         x = x.reshape((self.n, self.m))
-        dx = -x + self.Ib + self.Bu + sig.convolve2d(self.cnn(x), self.tempA, 'same')
+        dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
         return dx.reshape(self.m*self.n)
 
     def cnn(self, x):
       return 0.5*(abs(x + 1) - abs(x - 1))
 
     def isvalid(self, inputlocation):
-        if not os.path.isfile(inputlocation): 
+        if not os.path.isfile(inputlocation):
             raise Exception("File does not exist")
         elif inputlocation.split(".")[1].lower() not in self.filetypes or "." not in inputlocation:
             raise Exception("Invalid File")
@@ -62,26 +62,22 @@ class cnnimg:
     def imageprocessing(self, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t):
         gray = img.open(inputlocation).convert('RGB')
         self.m, self.n = gray.size
-        u = np.array(gray)
-        u = u[:,:,0]
-        z0 = (u)*initialcondition
-        self.Bu = sig.convolve2d(u, tempB, 'same')
-        self.tempA = tempA
-        self.Ib = Ib
-        z0 = z0.reshape(z0.size)
-        z = self.cnn(sint.odeint(self.f, z0, t))
+        u = np.array(gray)             #SYGNAŁ WEJŚCIOWY, NASZE U
+        u = u[:,:,0] # konwersja do RGB utrzymuje trzy pola RGB w macierzy, 0 to intensity
+        z0 = (u)*initialcondition #TODO: wat
+        Bu = sig.convolve2d(u, tempB, 'same')
+        z0 = z0.flatten()
+        z = self.cnn(sint.odeint(self.f, z0, t, args=(Ib, Bu, tempA)))
         l = z[z.shape[0]-1,:].reshape((self.n, self.m))
         l = l/(255.0)
-        for i in range(l.shape[0]):
-            for j in range(l.shape[1]):
-                l[i][j] = np.uint8(round(l[i][j]*255))
+        l_test = np.uint8(np.round(l*255))
         l = img.fromarray(l).convert('RGB')
         l.save(outputlocation)
-        print "Image Processing is successful."
+        print("Image Processing is successful.")
         return
     ## Helper Functions end
 
-    ## Image Processing methods start    
+    ## Image Processing methods start
 
     #edge detection #working
     def edgedetection(self, inputlocation = "", outputlocation = "output.png"):
@@ -89,7 +85,7 @@ class cnnimg:
             print "Invalid Location. Please try again ... "
             exit()
         print "Edge detection is initialized ... "
-        tempA = np.array([[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]])
+        tempA = np.zeros((3,3), dtype=float)
         tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 8.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -1.0
         t = np.linspace(0, 10.0, num=2)
@@ -104,7 +100,7 @@ class cnnimg:
             print "Invalid Location. Please try again ... "
             exit()
         print "Grayscale edge detection is initialized ... "
-        tempA = np.array([[0.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 0.0]]) 
+        tempA = np.array([[0.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 0.0]])
         tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 8.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -0.5
         t = np.linspace(0, 1.0, num=100)
@@ -119,8 +115,8 @@ class cnnimg:
             print "Invalid Location. Please try again ... "
             exit()
         print "Corner detection is initialized ... "
-        tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]]) 
-        tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 4.0, -1.0], [-1.0, -1.0, -1.0]])  
+        tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]])
+        tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 4.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -5.0
         t = np.linspace(0, 10.0, num=10)
         initialcondition = 0.0
@@ -134,8 +130,8 @@ class cnnimg:
             print "Invalid Location. Please try again ... "
             exit()
         print "Diagonal line detection is initialized ... "
-        tempA = np.array([[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 0.0]]) 
-        tempB = np.array([[-1.0, 0.0, 1.0], [0.0, 1.0, 0.0], [1.0, 0.0, -1.0]]) 
+        tempA = np.array([[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 0.0]])
+        tempB = np.array([[-1.0, 0.0, 1.0], [0.0, 1.0, 0.0], [1.0, 0.0, -1.0]])
         Ib = -4.0
         t = np.linspace(0, 0.2, num=100)
         initialcondition = 0.0
@@ -149,8 +145,8 @@ class cnnimg:
             print "Invalid Location. Please try again ... "
             exit()
         print "Inversion is initialized ... "
-        tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]]) 
-        tempB = np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [0.0, 0.0, 0.0]]) 
+        tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]])
+        tempB = np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [0.0, 0.0, 0.0]])
         Ib = -2.0
         t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
