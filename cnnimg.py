@@ -59,9 +59,9 @@ class cnnimg:
     def imageprocessing(self, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t):
         gray = img.open(inputlocation).convert('RGB')
         self.m, self.n = gray.size
-        u = np.array(gray)             #SYGNAŁ WEJŚCIOWY, NASZE U
-        u = u[:,:,0] # konwersja do RGB utrzymuje trzy pola RGB w macierzy, 0 to intensity
-        z0 = (u)*initialcondition #TODO: wat
+        u = np.array(gray)
+        u = u[:,:,0]
+        z0 = (u)*initialcondition
         Bu = sig.convolve2d(u, tempB, 'same')
         z0 = z0.flatten()
         z = self.cnn(sint.odeint(self.f, z0, t, args=(Ib, Bu, tempA)))
