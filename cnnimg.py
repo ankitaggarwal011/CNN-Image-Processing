@@ -31,10 +31,7 @@ import scipy.integrate as sint
 import Image as img
 import numpy as np
 import os.path
-import warnings
 
-#Ignore warnings
-# warnings.filterwarnings("ignore")
 
 class cnnimg:
     def __init__(self):
@@ -70,7 +67,7 @@ class cnnimg:
         z = self.cnn(sint.odeint(self.f, z0, t, args=(Ib, Bu, tempA)))
         l = z[z.shape[0]-1,:].reshape((self.n, self.m))
         l = l/(255.0)
-        l_test = np.uint8(np.round(l*255))
+        l = np.uint8(np.round(l*255))
         l = img.fromarray(l).convert('RGB')
         l.save(outputlocation)
         print("Image Processing is successful.")
@@ -82,90 +79,90 @@ class cnnimg:
     #edge detection #working
     def edgedetection(self, inputlocation = "", outputlocation = "output.png"):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Edge detection is initialized ... "
+        print ("Edge detection is initialized ... ")
         tempA = np.zeros((3,3), dtype=float)
         tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 8.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -1.0
         t = np.linspace(0, 10.0, num=2)
         initialcondition = 0.0
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Edge detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Edge detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
 
     #grayscale edge detection #working
     def grayscaleedgedetection(self, inputlocation = "", outputlocation = "output.png"):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Grayscale edge detection is initialized ... "
+        print ("Grayscale edge detection is initialized ... ")
         tempA = np.array([[0.0, 0.0, 0.0], [0.0, 2.0, 0.0], [0.0, 0.0, 0.0]])
         tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 8.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -0.5
         t = np.linspace(0, 1.0, num=100)
         initialcondition = 0.0
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Grayscale edge detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Grayscale edge detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
 
     #corner #working
     def cornerdetection(self, inputlocation = "", outputlocation = "output.png"):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Corner detection is initialized ... "
+        print ("Corner detection is initialized ... ")
         tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]])
         tempB = np.array([[-1.0, -1.0, -1.0], [-1.0, 4.0, -1.0], [-1.0, -1.0, -1.0]])
         Ib = -5.0
         t = np.linspace(0, 10.0, num=10)
         initialcondition = 0.0
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Corner detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Corner detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
 
     #diagonal line detector #working
     def diagonallinedetection(self, inputlocation = "", outputlocation = "output.png"):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Diagonal line detection is initialized ... "
+        print ("Diagonal line detection is initialized ... ")
         tempA = np.array([[0.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 0.0]])
         tempB = np.array([[-1.0, 0.0, 1.0], [0.0, 1.0, 0.0], [1.0, 0.0, -1.0]])
         Ib = -4.0
         t = np.linspace(0, 0.2, num=100)
         initialcondition = 0.0
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Diagonal line detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Diagonal line detection of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
 
     # logic NOT #inversion #working
     def inversion(self, inputlocation = "", outputlocation = "output.png"):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Inversion is initialized ... "
+        print ("Inversion is initialized ... ")
         tempA = np.array([[0.0, 0.0, 0.0], [0.0,1.0, 0.0], [0.0, 0.0, 0.0]])
         tempB = np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0], [0.0, 0.0, 0.0]])
         Ib = -2.0
         t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Inversion of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Inversion of image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
     ## Image Processing methods end
 
     ## General Image Processing method with template input
     def generaltemplates(self, inputlocation = "", outputlocation = "output.png", tempA_A = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], tempB_B = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], initialcondition = 0.0, Ib_b = 0.0, t = np.linspace(0, 10.0, num=2)):
         if not self.isvalid(inputlocation):
-            print "Invalid Location. Please try again ... "
+            print ("Invalid Location. Please try again ... ")
             exit()
-        print "Given templates application is initialized ... "
+        print ("Given templates application is initialized ... ")
         tempA=np.array(tempA_A)
         tempB=np.array(tempB_B)
         Ib = Ib_b
         self.imageprocessing(inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        print "Given templates applied to image "+ inputlocation +" is complete and saved at " + outputlocation + '\n'
+        print ("Given templates applied to image "+ inputlocation +" is complete and saved at " + outputlocation + '\n')
         return
 
     ## end of module
