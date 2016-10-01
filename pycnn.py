@@ -137,99 +137,134 @@ class pycnn:
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    # Halftoning templates
+    # CCD templates
 
-    def halftoning_hlf3(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Halftoning HLF3"
-        tempA = [[-0.07,-0.1,-0.07], [-0.1,1.03,-0.1], [-0.07,-0.1,-0.07]]
-        tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
+    def ccd_diag(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_Diag"
+        tempA = [[1.0,0.0,0.0], [0.0,2.0,0.0], [0.0,0.0,-1.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    def halftoning_hlf5(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Halftoning HLF5"
-        tempA = [[-0.0245, -0.07, -0.099, -0.07, -0.0245], 
-                 [-0.07, -0.324, -0.46, -0.324, -0.07], 
-                 [-0.099, -0.46, 1.05, -0.46, -0.099], 
-                 [-0.07, -0.324, -0.46, -0.324, -0.07], 
-                 [-0.0245, -0.07, -0.099, -0.07, -0.0245]]
-        tempB = [[0.0245, 0.07, 0.099, 0.07, 0.0245], 
-                 [0.07, 0.324, 0.46, 0.324, 0.07], 
-                 [0.099, 0.46, 0.81, 0.46, 0.099], 
-                 [0.07, 0.324, 0.46, 0.324, 0.07], 
-                 [0.0245, 0.07, 0.099, 0.07, 0.0245]]
+    def ccd_hor(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_HOR"
+        tempA = [[0.0, 0.0, 0.0], [1.0,2.0,-1.0], [0.0, 0.0, 0.0]]
+        tempB = [[0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    def halftoning_hlf5kc(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Halftoning HLF5KC"
-        tempA = [[-0.03, -0.086, -0.13, -0.086, -0.03], 
-                 [-0.086, -0.359, -0.604, -0.359, -0.086], 
-                 [-0.13, -0.604, 1.05, -0.604, -0.13], 
-                 [-0.086, -0.359, -0.604, -0.359, -0.086], 
-                 [-0.03, -0.086, -0.13, -0.086, -0.03]]
-        tempB = [[0.0, 0.0, 0.068, 0.0, 0.0], 
-                 [0.0, 0.355, 0.756, 0.355, 0.0], 
-                 [0.068, 0.756, 2.122, 0.756, 0.068], 
-                 [0.0, 0.355, 0.756, 0.355, 0.0], 
-                 [0.0, 0.0, 0.068, 0.0, 0.0]]
+    def ccd_hor_l(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_HOR_l"
+        tempA = [[0.0, 0.0, 0.0], [-1.0,2.0,1.0], [0.0, 0.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    # Inverse Halftoning templates
-
-    def halftoning_herring(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Inverse Halftoning Herring"
-        tempA = [[0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0]]
-        tempB = [[-0.16, -0.16, -0.16, -0.16, -0.16], 
-                 [-0.16, -0.4, -0.4, -0.4, -0.16],
-                 [-0.16, -0.4, 4.0, -0.4, -0.16],
-                 [-0.16, -0.4, -0.4, -0.4, -0.16],
-                 [-0.16, -0.16, -0.16, -0.16, -0.16]]
+    def ccd_hor_r(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_HOR_r"
+        tempA = [[0.0, 0.0, 0.0], [1.0,2.0,-1.0], [0.0, 0.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    def halftoning_invhlf3(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Inverse Halftoning HLF3"
-        tempA = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
-        tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
+    def ccd_ne(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_NE"
+        tempA = [[0.0, 0.0,-1.0], [0.0,2.0,0.0], [1.0, 0.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    def halftoning_invhlf5(self, inputlocation = "", outputlocation = "output.png"):
-        name = "Inverse Halftoning HLF5"
-        tempA = [[0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0], 
-                 [0.0, 0.0, 0.0, 0.0, 0.0]]
-        tempB = [[0.0049, 0.014, 0.0198, 0.014, 0.0049], 
-                 [0.014, 0.0648, 0.092, 0.0648, 0.014], 
-                 [0.0198, 0.092, 0.162, 0.092, 0.0198], 
-                 [0.014, 0.0648, 0.092, 0.0648, 0.014], 
-                 [0.0049, 0.014, 0.0198, 0.014, 0.0049]]
+    def ccd_nw(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_NW"
+        tempA = [[-1.0, 0.0, 0.0], [0.0,2.0,0.0], [0.0, 0.0, 1.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return  
+        return
 
+    def ccd_se(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_SE"
+        tempA = [[1.0, 0.0, 0.0], [0.0,2.0,0.0], [0.0, 0.0, -1.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def ccd_sw(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_SW"
+        tempA = [[0.0, 0.0, 1.0], [0.0,2.0,0.0], [-1.0, 0.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def ccd_vert(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_VERT"
+        tempA = [[0.0, 1.0, 0.0], [0.0,2.0,0.0], [0.0, -1.0, 0.0]]
+        tempB = [[0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def ccd_vert_down(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_VERT_down"
+        tempA = [[0.0, 1.0, 0.0], [0.0,2.0,0.0], [0.0, -1.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def ccd_vert_top(self, inputlocation = "", outputlocation = "output.png"):
+        name = "CCD_VERT_top"
+        tempA = [[0.0, -1.0, 0.0], [0.0,2.0,0.0], [0.0, 1.0, 0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def smkiller(self, inputlocation = "", outputlocation = "output.png"):
+        name = "SMKILLER"
+        tempA = [[1.0, 1.0, 1.0], [1.0,2.0,1.0], [1.0, 1.0, 1.0]]
+        tempB = [[0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def werosion(self, inputlocation = "", outputlocation = "output.png"):
+        name = "WErosion"
+        tempA = [[0.0, 0.5, 0.0], [0.5,-1.1,0.5], [0.0,0.5,0.0]]
+        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
