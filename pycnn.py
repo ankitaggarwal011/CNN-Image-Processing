@@ -136,3 +136,100 @@ class pycnn:
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
+
+    # Halftoning templates
+
+    def halftoning_hlf3(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Halftoning HLF3"
+        tempA = [[-0.07,-0.1,-0.07], [-0.1,1.03,-0.1], [-0.07,-0.1,-0.07]]
+        tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def halftoning_hlf5(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Halftoning HLF5"
+        tempA = [[-0.0245, -0.07, -0.099, -0.07, -0.0245], 
+                 [-0.07, -0.324, -0.46, -0.324, -0.07], 
+                 [-0.099, -0.46, 1.05, -0.46, -0.099], 
+                 [-0.07, -0.324, -0.46, -0.324, -0.07], 
+                 [-0.0245, -0.07, -0.099, -0.07, -0.0245]]
+        tempB = [[0.0245, 0.07, 0.099, 0.07, 0.0245], 
+                 [0.07, 0.324, 0.46, 0.324, 0.07], 
+                 [0.099, 0.46, 0.81, 0.46, 0.099], 
+                 [0.07, 0.324, 0.46, 0.324, 0.07], 
+                 [0.0245, 0.07, 0.099, 0.07, 0.0245]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def halftoning_hlf5kc(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Halftoning HLF5KC"
+        tempA = [[-0.03, -0.086, -0.13, -0.086, -0.03], 
+                 [-0.086, -0.359, -0.604, -0.359, -0.086], 
+                 [-0.13, -0.604, 1.05, -0.604, -0.13], 
+                 [-0.086, -0.359, -0.604, -0.359, -0.086], 
+                 [-0.03, -0.086, -0.13, -0.086, -0.03]]
+        tempB = [[0.0, 0.0, 0.068, 0.0, 0.0], 
+                 [0.0, 0.355, 0.756, 0.355, 0.0], 
+                 [0.068, 0.756, 2.122, 0.756, 0.068], 
+                 [0.0, 0.355, 0.756, 0.355, 0.0], 
+                 [0.0, 0.0, 0.068, 0.0, 0.0]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    # Inverse Halftoning templates
+
+    def halftoning_herring(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Inverse Halftoning Herring"
+        tempA = [[0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0]]
+        tempB = [[-0.16, -0.16, -0.16, -0.16, -0.16], 
+                 [-0.16, -0.4, -0.4, -0.4, -0.16],
+                 [-0.16, -0.4, 4.0, -0.4, -0.16],
+                 [-0.16, -0.4, -0.4, -0.4, -0.16],
+                 [-0.16, -0.16, -0.16, -0.16, -0.16]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def halftoning_invhlf3(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Inverse Halftoning HLF3"
+        tempA = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+        tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+    def halftoning_invhlf5(self, inputlocation = "", outputlocation = "output.png"):
+        name = "Inverse Halftoning HLF5"
+        tempA = [[0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0], 
+                 [0.0, 0.0, 0.0, 0.0, 0.0]]
+        tempB = [[0.0049, 0.014, 0.0198, 0.014, 0.0049], 
+                 [0.014, 0.0648, 0.092, 0.0648, 0.014], 
+                 [0.0198, 0.092, 0.162, 0.092, 0.0198], 
+                 [0.014, 0.0648, 0.092, 0.0648, 0.014], 
+                 [0.0049, 0.014, 0.0198, 0.014, 0.0049]]
+        Ib = 0.0
+        t = np.linspace(0, 0.2, num=10)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return  
+
