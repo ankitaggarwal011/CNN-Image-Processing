@@ -137,134 +137,24 @@ class pycnn:
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    # CCD templates
+    # Constrained diffusion templates
 
-    def ccd_diag(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_Diag"
-        tempA = [[1.0,0.0,0.0], [0.0,2.0,0.0], [0.0,0.0,-1.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
+    def diffus4(self, inputlocation = "", outputlocation = "output.png"):
+        name = "DIFFUS4"
+        tempA = [[0.01,0.02,0.02,0.02,0.01],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.02,0.03,0.04,0.03,0.02],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.01,0.02,0.02,0.02,0.01]]
+        tempB = [[0.01,0.02,0.02,0.02,0.01],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.02,0.03,0.04,0.03,0.02],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.01,0.02,0.02,0.02,0.01]]
+        Ib = -2.0
         t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
 
-    def ccd_hor(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_HOR"
-        tempA = [[0.0, 0.0, 0.0], [1.0,2.0,-1.0], [0.0, 0.0, 0.0]]
-        tempB = [[0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
 
-    def ccd_hor_l(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_HOR_l"
-        tempA = [[0.0, 0.0, 0.0], [-1.0,2.0,1.0], [0.0, 0.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_hor_r(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_HOR_r"
-        tempA = [[0.0, 0.0, 0.0], [1.0,2.0,-1.0], [0.0, 0.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_ne(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_NE"
-        tempA = [[0.0, 0.0,-1.0], [0.0,2.0,0.0], [1.0, 0.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_nw(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_NW"
-        tempA = [[-1.0, 0.0, 0.0], [0.0,2.0,0.0], [0.0, 0.0, 1.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_se(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_SE"
-        tempA = [[1.0, 0.0, 0.0], [0.0,2.0,0.0], [0.0, 0.0, -1.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_sw(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_SW"
-        tempA = [[0.0, 0.0, 1.0], [0.0,2.0,0.0], [-1.0, 0.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_vert(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_VERT"
-        tempA = [[0.0, 1.0, 0.0], [0.0,2.0,0.0], [0.0, -1.0, 0.0]]
-        tempB = [[0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_vert_down(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_VERT_down"
-        tempA = [[0.0, 1.0, 0.0], [0.0,2.0,0.0], [0.0, -1.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def ccd_vert_top(self, inputlocation = "", outputlocation = "output.png"):
-        name = "CCD_VERT_top"
-        tempA = [[0.0, -1.0, 0.0], [0.0,2.0,0.0], [0.0, 1.0, 0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def smkiller(self, inputlocation = "", outputlocation = "output.png"):
-        name = "SMKILLER"
-        tempA = [[1.0, 1.0, 1.0], [1.0,2.0,1.0], [1.0, 1.0, 1.0]]
-        tempB = [[0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
-
-    def werosion(self, inputlocation = "", outputlocation = "output.png"):
-        name = "WErosion"
-        tempA = [[0.0, 0.5, 0.0], [0.5,-1.1,0.5], [0.0,0.5,0.0]]
-        tempB = [[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]]
-        Ib = 0.0
-        t = np.linspace(0, 10.0, num=100)
-        initialcondition = 0.0
-        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
-        return
