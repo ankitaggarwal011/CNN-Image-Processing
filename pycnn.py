@@ -144,7 +144,7 @@ class pycnn:
         tempA = [[-0.07,-0.1,-0.07], [-0.1,1.03,-0.1], [-0.07,-0.1,-0.07]]
         tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
@@ -162,7 +162,7 @@ class pycnn:
                  [0.07, 0.324, 0.46, 0.324, 0.07], 
                  [0.0245, 0.07, 0.099, 0.07, 0.0245]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=500)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
@@ -180,7 +180,7 @@ class pycnn:
                  [0.0, 0.355, 0.756, 0.355, 0.0], 
                  [0.0, 0.0, 0.068, 0.0, 0.0]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=1000)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
@@ -210,7 +210,7 @@ class pycnn:
         tempA = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
         tempB = [[0.07,0.1,0.07], [0.1, 0.32, 0.1], [0.07,0.1,0.07]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=100)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
@@ -228,7 +228,7 @@ class pycnn:
                  [0.014, 0.0648, 0.092, 0.0648, 0.014], 
                  [0.0049, 0.014, 0.0198, 0.014, 0.0049]]
         Ib = 0.0
-        t = np.linspace(0, 0.2, num=10)
+        t = np.linspace(0, 10.0, num=500)
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return  
