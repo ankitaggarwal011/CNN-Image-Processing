@@ -46,12 +46,12 @@ cnn = pycnn()
 
 **Input:**
 
-![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/input.bmp)
+![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/input1.bmp)
 
 **Edge Detection:**
 
 ```python
-cnn.edgedetection('images/input.bmp', 'images/output1.png')
+cnn.edgedetection('images/input1.bmp', 'images/output1.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output1.png)
@@ -59,7 +59,7 @@ cnn.edgedetection('images/input.bmp', 'images/output1.png')
 **Grayscale Edge Detection**
 
 ```python
-cnn.grayscaleedgedetection('images/input.bmp', 'images/output2.png')
+cnn.grayscaleedgedetection('images/input1.bmp', 'images/output2.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output2.png)
@@ -67,7 +67,7 @@ cnn.grayscaleedgedetection('images/input.bmp', 'images/output2.png')
 **Corner Detection:**
 
 ```python
-cnn.cornerdetection('images/input.bmp', 'images/output3.png')
+cnn.cornerdetection('images/input1.bmp', 'images/output3.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output3.png)
@@ -75,7 +75,7 @@ cnn.cornerdetection('images/input.bmp', 'images/output3.png')
 **Diagonal line Detection:**
 
 ```python
-cnn.diagonallinedetection('images/input.bmp', 'images/output4.png')
+cnn.diagonallinedetection('images/input1.bmp', 'images/output4.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output4.png)
@@ -83,7 +83,7 @@ cnn.diagonallinedetection('images/input.bmp', 'images/output4.png')
 **Inversion (Logic NOT):**
 
 ```python
-cnn.inversion('images/input.bmp', 'images/output5.png')
+cnn.inversion('images/input1.bmp', 'images/output5.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output5.png)

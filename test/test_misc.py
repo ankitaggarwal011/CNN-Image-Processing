@@ -16,7 +16,7 @@ class TestMiscFunctions(unittest.TestCase):
 
     def test_is_valid(self):
         input_file = os.path.join(
-            BASE_DIR, 'images', 'input.bmp',
+            BASE_DIR, 'images', 'input1.bmp',
         )
         result = self.cnn.isvalid(input_file)
         self.assertTrue(result)
