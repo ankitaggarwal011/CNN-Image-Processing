@@ -137,3 +137,25 @@ class pycnn:
         initialcondition = 0.0
         self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
         return
+
+    # Constrained diffusion templates
+
+    def diffus4(self, inputlocation = "", outputlocation = "output.png"):
+        name = "DIFFUS4"
+        tempA = [[0.01,0.02,0.02,0.02,0.01],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.02,0.03,0.04,0.03,0.02],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.01,0.02,0.02,0.02,0.01]]
+        tempB = [[0.01,0.02,0.02,0.02,0.01],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.02,0.03,0.04,0.03,0.02],
+                 [0.02,0.02,0.03,0.02,0.02],
+                 [0.01,0.02,0.02,0.02,0.01]]
+        Ib = -2.0
+        t = np.linspace(0, 10.0, num=100)
+        initialcondition = 0.0
+        self.generaltemplates(name, inputlocation, outputlocation, tempA, tempB, initialcondition, Ib, t)
+        return
+
+
