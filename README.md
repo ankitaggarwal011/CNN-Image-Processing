@@ -1,6 +1,7 @@
 # PyCNN: Image Processing with Cellular Neural Networks in Python
 
 [![Build Status](https://travis-ci.org/ankitaggarwal011/PyCNN.svg?branch=master)](https://travis-ci.org/ankitaggarwal011/PyCNN)
+[![Coverage Status](https://codecov.io/gh/ankitaggarwal011/PyCNN/coverage.svg?branch=master)](https://codecov.io/gh/ankitaggarwal011/PyCNN)
 
 **Cellular Neural Networks (CNN)** [[wikipedia]](https://en.wikipedia.org/wiki/Cellular_neural_network) [[paper]](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7600) are a parallel computing paradigm that was first proposed in 1988. Cellular neural networks are similar to neural networks, with the difference that communication is allowed only between neighboring units. Image Processing is one of its [applications](https://en.wikipedia.org/wiki/Cellular_neural_network#Applications). CNN processors were designed to perform image processing; specifically, the original application of CNN processors was to perform real-time ultra-high frame-rate (>10,000 frame/s) processing unachievable by digital processors.
 
@@ -144,16 +145,16 @@ cnn = pycnn()
 # tempB_B: feedback template; type: n x n list, e.g. 3 x 3, 5 x 5.
 # initialcondition: initial condition, type: float.
 # Ib_b: bias, type: float.
-# t: time points for integration, type: ndarray. 
+# t: time points for integration, type: ndarray.
   # Note: Some image processing methods might need more time point samples than default.
-  #       Display the output with each time point to see the evolution until the final convergence 
+  #       Display the output with each time point to see the evolution until the final convergence
   #       to the output, looks pretty cool.
 ```
 
 General image processing
 
 ```python
-cnn.generaltemplates(name, inputimagelocation, outputimagelocation, tempA_A, tempB_B, 
+cnn.generaltemplates(name, inputimagelocation, outputimagelocation, tempA_A, tempB_B,
                       initialcondition, Ib_b, t)
 ```
 
