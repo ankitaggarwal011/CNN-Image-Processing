@@ -33,14 +33,14 @@ import numpy as np
 import os.path
 import warnings
 
+SUPPORTED_FILETYPES = (
+    'jpeg', 'jpg', 'png', 'tiff', 'gif', 'bmp',
+)
+
 warnings.filterwarnings('ignore')  # Ignore trivial warnings
 
 
-class pycnn:
-
-    def __init__(self):
-        # Supported filetypes
-        self.filetypes = ['jpeg', 'jpg', 'png', 'tiff', 'gif', 'bmp']
+class pycnn(object):
 
     def f(self, x, t, Ib, Bu, tempA):
         x = x.reshape((self.n, self.m))
@@ -50,14 +50,19 @@ class pycnn:
     def cnn(self, x):
         return 0.5 * (abs(x + 1) - abs(x - 1))
 
-    def isvalid(self, inputlocation):
-        temp = inputlocation.split('.')[1].lower()
-        if not os.path.isfile(inputlocation):
-            raise Exception('File does not exist.')
-        elif temp not in self.filetypes or '.' not in inputlocation:
-            raise Exception('Invalid File.')
-        else:
-            return True
+    def validate(self, input_location):
+        _, ext = os.path.splitext(input_location)
+        ext = ext.lstrip('.').lower()
+        if not os.path.exists(input_location):
+            raise IOError('File {} does not exist.'.format(input_location))
+        elif not os.path.isfile(input_location):
+            raise IOError('Path {} is not a file.'.format(input_location))
+        elif ext not in SUPPORTED_FILETYPES:
+            raise Exception(
+                '{} file type is not supported. Supported: {}'.format(
+                    ext, ', '.join(SUPPORTED_FILETYPES)
+                )
+            )
 
     # tempA: control template, tempB: feedback template
     def imageprocessing(self, inputlocation, outputlocation,
@@ -96,10 +101,7 @@ class pycnn:
                          initialcondition=0.0,
                          Ib_b=0.0,
                          t=np.linspace(0, 10.0, num=2)):
-        if not self.isvalid(inputlocation):
-            print('Invalid Location. Please try again.')
-            exit()
-
+        self.validate(inputlocation)
         print(name, 'initialized.')
         self.imageprocessing(inputlocation,
                              outputlocation,
