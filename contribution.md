@@ -58,7 +58,7 @@ New contributor tips
 --------------------
 
 A great way to start contributing to PyCNN is to pick an item
-from the list of [Easy issues](https://github.com/ankitaggarwal011/PyCNN.git/issues)
+from the list of [Easy issues](https://github.com/ankitaggarwal011/PyCNN/issues)
 in the issue tracker. Resolving these issues allow you to start
 contributing to the project without much prior knowledge. Your
 assistance in this area will be greatly appreciated by the more
