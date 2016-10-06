@@ -10,7 +10,7 @@ likelihood of your contribution being merged.**
 How to contribute
 -----------------
 
-The preferred workflow for contributing to scikit-learn is to fork the 
+The preferred workflow for contributing to PyCNN is to fork the 
 [main repository](https://github.com/ankitaggarwal011/PyCNN.git) on
 GitHub, clone, and develop on a branch. Steps:
 
@@ -18,11 +18,11 @@ GitHub, clone, and develop on a branch. Steps:
    by clicking on the 'Fork' button near the top right of the page. This creates
    a copy of the code under your GitHub user account.
 
-2. Clone your fork of the scikit-learn repo from your GitHub account to your local disk:
+2. Clone your fork of the PyCNN repo from your GitHub account to your local disk:
 
    ```bash
    $ git clone git@github.com:YourLogin/PyCNN.git
-   $ cd scikit-learn
+   $ cd PyCNN
    ```
    
 3. Create a ``changes`` branch to hold your development changes:
@@ -58,7 +58,7 @@ New contributor tips
 --------------------
 
 A great way to start contributing to PyCNN is to pick an item
-from the list of [Easy issues](https://github.com/ankitaggarwal011/PyCNN.git/issues?labels=Easy)
+from the list of [Easy issues](https://github.com/ankitaggarwal011/PyCNN.git/issues)
 in the issue tracker. Resolving these issues allow you to start
 contributing to the project without much prior knowledge. Your
 assistance in this area will be greatly appreciated by the more
