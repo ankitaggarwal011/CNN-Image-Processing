@@ -56,22 +56,35 @@ class pycnn(object):
 
 
     Attributes:
-        n (int): The number of rows from the image matrix.
-        m (int): The number of columns form the image matrix.
+        n (int): Height of the image.
+        m (int): Width of the image.
     """
 
     def __init__(self):
+        """Sets the initial class attributes m (width) and n (height)."""
         self.m = 0  # width (number of columns)
         self.n = 0  # height (number of rows)
 
     def f(self, x, t, Ib, Bu, tempA):
-        """Computes the derivative of x at t."""
+        """Computes the derivative of x at t.
+
+        Args:
+            x: The input.
+            Ib (float): System bias.
+            Bu: Convolution of control template with input.
+            tempA (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
+                template.
+        """
         x = x.reshape((self.n, self.m))
         dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
         return dx.reshape(self.m * self.n)
 
     def cnn(self, x):
-        """Approximate sigmoidal kernel function for the neural network."""
+        """"Piece-wise linear sigmoid function.
+
+        Args:
+            x : Input to the piece-wise linear sigmoid function.
+        """
         return 0.5 * (abs(x + 1) - abs(x - 1))
 
     def validate(self, input_location):
@@ -106,10 +119,10 @@ class pycnn(object):
             inputlocation (str): The string path for the input image.
             outputlocation (str): The string path for the output processed
                 image.
-            tempA (:obj:`list` of :obj:`list`of :obj:`float`): The template
-                matrix A.
-            tempB (:obj:`list` of :obj:`list`of :obj:`float`): The template
-                matrix B.
+            tempA (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
+                template.
+            tempB (:obj:`list` of :obj:`list`of :obj:`float`): Control
+                template.
             initialcondition (float): The initial template state.
             Ib (float): The template parameter z.
             t (numpy.ndarray): A numpy array with evenly spaced numbers.
@@ -156,10 +169,10 @@ class pycnn(object):
             inputlocation (str): The string path for the input image.
             outputlocation (str): The string path for the output processed
                 image.
-            tempA_A (:obj:`list` of :obj:`list`of :obj:`float`): The template
-                matrix A.
-            tempB_B (:obj:`list` of :obj:`list`of :obj:`float`): The template
-                matrix B.
+            tempA_A (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
+                template.
+            tempB_B (:obj:`list` of :obj:`list`of :obj:`float`): Control
+                template.
             initialcondition (float): The initial template state.
             Ib_b (float): The template parameter z.
             t (numpy.ndarray): A numpy array with evenly spaced numbers.
