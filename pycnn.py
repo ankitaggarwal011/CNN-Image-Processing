@@ -80,7 +80,7 @@ class pycnn(object):
         return dx.reshape(self.m * self.n)
 
     def cnn(self, x):
-        """"Piece-wise linear sigmoid function.
+        """Piece-wise linear sigmoid function.
 
         Args:
             x : Input to the piece-wise linear sigmoid function.
@@ -123,9 +123,10 @@ class pycnn(object):
                 template.
             tempB (:obj:`list` of :obj:`list`of :obj:`float`): Control
                 template.
-            initialcondition (float): The initial template state.
-            Ib (float): The template parameter z.
-            t (numpy.ndarray): A numpy array with evenly spaced numbers.
+            initialcondition (float): The initial state.
+            Ib (float): System bias.
+            t (numpy.ndarray): A numpy array with evenly spaced numbers
+                representing time points.
         """
         gray = img.open(inputlocation).convert('RGB')
         self.m, self.n = gray.size
@@ -173,9 +174,10 @@ class pycnn(object):
                 template.
             tempB_B (:obj:`list` of :obj:`list`of :obj:`float`): Control
                 template.
-            initialcondition (float): The initial template state.
-            Ib_b (float): The template parameter z.
-            t (numpy.ndarray): A numpy array with evenly spaced numbers.
+            initialcondition (float): The initial state.
+            Ib_b (float): System bias.
+            t (numpy.ndarray): A numpy array with evenly spaced numbers
+                representing time points.
         """
         self.validate(inputlocation)
         print(name, 'initialized.')
