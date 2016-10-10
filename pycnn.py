@@ -61,9 +61,10 @@ class pycnn(object):
     """
 
     def __init__(self):
+
         """Sets the initial class attributes m (width) and n (height)."""
-        self.m = 0  # width (number of columns)
-        self.n = 0  # height (number of rows)
+        self._width = 0  # width (number of columns)
+        self._height = 0  # height (number of rows)
 
     def f(self, x, t, Ib, Bu, tempA):
         """Computes the derivative of x at t.
@@ -75,9 +76,10 @@ class pycnn(object):
             tempA (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
                 template.
         """
-        x = x.reshape((self.n, self.m))
+        x = x.reshape((self._height, self._width))
+
         dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
-        return dx.reshape(self.m * self.n)
+        return dx.reshape(self._width * self._height)
 
     def cnn(self, x):
         """Piece-wise linear sigmoid function.
@@ -88,6 +90,7 @@ class pycnn(object):
         return 0.5 * (abs(x + 1) - abs(x - 1))
 
     def validate(self, input_location):
+
         """Checks if a string path exists or is from a supported file type.
 
         Args:
@@ -97,16 +100,17 @@ class pycnn(object):
             IOError: If `input_location` does not exist or is not a file.
             Exception: If file type is not supported.
         """
-        _, ext = os.path.splitext(input_location)
-        ext = ext.lstrip('.').lower()
+        _, file_format = os.path.splitext(input_location)
+        file_format = file_format.lstrip('.').lower()
+
         if not os.path.exists(input_location):
             raise IOError('File {} does not exist.'.format(input_location))
         elif not os.path.isfile(input_location):
             raise IOError('Path {} is not a file.'.format(input_location))
-        elif ext not in SUPPORTED_FILETYPES:
+        elif file_format not in SUPPORTED_FILETYPES:
             raise Exception(
                 '{} file type is not supported. Supported: {}'.format(
-                    ext, ', '.join(SUPPORTED_FILETYPES)
+                    file_format, ', '.join(SUPPORTED_FILETYPES)
                 )
             )
 
@@ -129,7 +133,7 @@ class pycnn(object):
                 representing time points.
         """
         gray = img.open(inputlocation).convert('RGB')
-        self.m, self.n = gray.size
+        self._width, self._height = gray.size
         u = np.array(gray)
         u = u[:, :, 0]
         z0 = u * initialcondition
@@ -137,7 +141,7 @@ class pycnn(object):
         z0 = z0.flatten()
         z = self.cnn(sint.odeint(
             self.f, z0, t, args=(Ib, Bu, tempA), mxstep=1000))
-        l = z[z.shape[0] - 1, :].reshape((self.n, self.m))
+        l = z[z.shape[0] - 1, :].reshape((self._height, self._width))
         l = l / (255.0)
         l = np.uint8(np.round(l * 255))
         # The direct vectorization was causing problems on Raspberry Pi.
