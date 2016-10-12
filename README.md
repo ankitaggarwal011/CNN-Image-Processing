@@ -1,6 +1,7 @@
 # PyCNN: Image Processing with Cellular Neural Networks in Python
 
 [![Build Status](https://travis-ci.org/ankitaggarwal011/PyCNN.svg?branch=master)](https://travis-ci.org/ankitaggarwal011/PyCNN)
+[![Coverage Status](https://codecov.io/gh/ankitaggarwal011/PyCNN/coverage.svg?branch=master)](https://codecov.io/gh/ankitaggarwal011/PyCNN)
 
 **Cellular Neural Networks (CNN)** [[wikipedia]](https://en.wikipedia.org/wiki/Cellular_neural_network) [[paper]](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7600) are a parallel computing paradigm that was first proposed in 1988. Cellular neural networks are similar to neural networks, with the difference that communication is allowed only between neighboring units. Image Processing is one of its [applications](https://en.wikipedia.org/wiki/Cellular_neural_network#Applications). CNN processors were designed to perform image processing; specifically, the original application of CNN processors was to perform real-time ultra-high frame-rate (>10,000 frame/s) processing unachievable by digital processors.
 
@@ -12,11 +13,15 @@ This python library is the implementation of CNN for the application of **Image 
 
 ![alt text](http://www.isiweb.ee.ethz.ch/haenggi/CNN_web/CNN_figures/blockdiagram.gif "CNN Architecture")
 
-As shown in the above diagram, imagine a control system with a feedback loop. f(x) is the sigmoidal kernel function for this system. The control and the feedback templates (coefficients) are configurable and controls the output of the system. Significant research had been done in determining the templates for common image processing techniques, these templates are published in this [Template Library](http://cnn-technology.itk.ppke.hu/Template_library_v4.0alpha1.pdf).
+As shown in the above diagram, imagine a control system with a feedback loop. f(x) is the piece-wise linear sigmoid function. The control (template B) and the feedback (template A) templates (coefficients) are configurable and controls the output of the system. Significant research had been done in determining the templates for common image processing techniques, these templates are published in this [Template Library](http://cnn-technology.itk.ppke.hu/Template_library_v4.0alpha1.pdf).
+
+### Further reading:
+- [Methods for image processing and pattern formation in Cellular Neural Networks: A Tutorial](http://ai.pku.edu.cn/aiwebsite/research.files/collected%20papers%20-%20others/Methods%20for%20image%20processing%20and%20pattern%20formation%20in%20Cellular%20Neural%20Networks%20-%20a%20tutorial.pdf)
 
 ## Motivation
 
 This is an extension of a demo at 14th Cellular Nanoscale Networks and Applications (CNNA) Conference 2014. I have written a blog post, available at [Image Processing in CNN with Python on Raspberry Pi](http://blog.ankitaggarwal.me/technology/image-processing-with-cellular-neural-networks-in-python-on-raspberry-pi).
+The library was used in my paper [B3: A plug-n-play internet enabled platform for real time image processing](http://ieeexplore.ieee.org/document/6888614/) published in IEEE Xplore.
 
 ## Dependencies
 
@@ -134,14 +139,18 @@ Initialize object
 
 ```python
 cnn = pycnn()
+
+# object variables: 
+# m: width of the image (number of columns)
+# n: height of image (number of rows)
 ```
 
 ```python
 # name: name of image processing method (say, Edge detection); type: string
 # inputimagelocation: location of the input image; type: string.
 # outputimagelocation: location of the output image; type: string.
-# tempA_A: control template; type: n x n list, e.g. 3 x 3, 5 x 5.
-# tempB_B: feedback template; type: n x n list, e.g. 3 x 3, 5 x 5.
+# tempA_A: feedback template; type: n x n list, e.g. 3 x 3, 5 x 5.
+# tempB_B: control template; type: n x n list, e.g. 3 x 3, 5 x 5.
 # initialcondition: initial condition, type: float.
 # Ib_b: bias, type: float.
 # t: time points for integration, type: ndarray. 
