@@ -135,8 +135,16 @@ class pycnn(object):
         z0 = u * initialcondition
         Bu = sig.convolve2d(u, tempB, 'same')
         z0 = z0.flatten()
-        z = self.cnn(sint.odeint(
-            self.f, z0, t, args=(Ib, Bu, tempA), mxstep=1000))
+        ode = sint.ode(self.f)
+        ode.set_integrator("lsoda", max_step=1000)
+        ode.set_initial_value(z0)
+        ode.set_f_params(Ib, Bu, tempA)
+        ode_result = ode.integrate(t)
+        if ode.successful():
+            print("It worked!")
+        else:
+            print("Nope.")
+        z = self.cnn(ode_result)
         l = z[z.shape[0] - 1, :].reshape((self.n, self.m))
         l = l / (255.0)
         l = np.uint8(np.round(l * 255))
