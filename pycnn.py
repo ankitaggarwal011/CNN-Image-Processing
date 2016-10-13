@@ -143,7 +143,7 @@ class pycnn(object):
         if ode.successful():
             print("It worked!")
         else:
-            print("Nope.")
+            print("Nope. Didn't work.")
         z = self.cnn(ode_result)
         l = z[z.shape[0] - 1, :].reshape((self.n, self.m))
         l = l / (255.0)
