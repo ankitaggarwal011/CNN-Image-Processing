@@ -153,16 +153,16 @@ cnn = pycnn()
 # tempB_B: control template; type: n x n list, e.g. 3 x 3, 5 x 5.
 # initialcondition: initial condition, type: float.
 # Ib_b: bias, type: float.
-# t: time points for integration, type: ndarray. 
+# t: time points for integration, type: ndarray.
   # Note: Some image processing methods might need more time point samples than default.
-  #       Display the output with each time point to see the evolution until the final convergence 
+  #       Display the output with each time point to see the evolution until the final convergence
   #       to the output, looks pretty cool.
 ```
 
 General image processing
 
 ```python
-cnn.generaltemplates(name, inputimagelocation, outputimagelocation, tempA_A, tempB_B, 
+cnn.generaltemplates(name, inputimagelocation, outputimagelocation, tempA_A, tempB_B,
                       initialcondition, Ib_b, t)
 ```
 
