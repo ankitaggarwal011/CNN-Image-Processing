@@ -56,14 +56,14 @@ class pycnn(object):
 
 
     Attributes:
-        n (int): Height of the image.
-        m (int): Width of the image.
+        height (int): Height of the image.
+        width (int): Width of the image.
     """
 
     def __init__(self):
-        """Sets the initial class attributes m (width) and n (height)."""
-        self.m = 0  # width (number of columns)
-        self.n = 0  # height (number of rows)
+        """Sets the initial class attributes width (width) and height (height)."""
+        self.width = 0  # width (number of columns)
+        self.height = 0  # height (number of rows)
 
     def f(self, x, t, Ib, Bu, tempA):
         """Computes the derivative of x at t.
@@ -75,9 +75,9 @@ class pycnn(object):
             tempA (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
                 template.
         """
-        x = x.reshape((self.n, self.m))
+        x = x.reshape((self.height, self.width))
         dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
-        return dx.reshape(self.m * self.n)
+        return dx.reshape(self.width * self.height)
 
     def cnn(self, x):
         """Piece-wise linear sigmoid function.
@@ -129,7 +129,7 @@ class pycnn(object):
                 representing time points.
         """
         gray = img.open(inputlocation).convert('RGB')
-        self.m, self.n = gray.size
+        self.width, self.height = gray.size
         u = np.array(gray)
         u = u[:, :, 0]
         z0 = u * initialcondition
@@ -137,7 +137,7 @@ class pycnn(object):
         z0 = z0.flatten()
         z = self.cnn(sint.odeint(
             self.f, z0, t, args=(Ib, Bu, tempA), mxstep=1000))
-        l = z[z.shape[0] - 1, :].reshape((self.n, self.m))
+        l = z[z.shape[0] - 1, :].reshape((self.height, self.width))
         l = l / (255.0)
         l = np.uint8(np.round(l * 255))
         # The direct vectorization was causing problems on Raspberry Pi.
