@@ -65,7 +65,7 @@ class pycnn(object):
         self.m = 0  # width (number of columns)
         self.n = 0  # height (number of rows)
 
-    def f(self, x, t, Ib, Bu, tempA):
+    def f(self, t, x, Ib, Bu, tempA):
         """Computes the derivative of x at t.
 
         Args:
@@ -135,13 +135,13 @@ class pycnn(object):
         z0 = u * initialcondition
         Bu = sig.convolve2d(u, tempB, 'same')
         z0 = z0.flatten()
-        # ode = sint.ode(self.f, jac=None) \
-        #     .set_integrator("vode", max_step=1000) \
-        #     .set_initial_value(z0) \
-        #     .set_f_params(Ib, Bu, tempA)
-        # ode_result = ode.integrate(t)
-        ode_result = sint.odeint(
-            self.f, z0, t, args=(Ib, Bu, tempA), mxstep=1000)
+        ode = sint.ode(self.f, jac=None) \
+            .set_integrator("vode", max_step=1000) \
+            .set_initial_value(z0) \
+            .set_f_params(Ib, Bu, tempA)
+        ode_result = ode.integrate(t)
+        # ode_result = sint.odeint(
+        #     self.f, z0, t, args=(Ib, Bu, tempA), mxstep=1000)
         # if ode.successful():
         #     print("It worked!")
         # else:
