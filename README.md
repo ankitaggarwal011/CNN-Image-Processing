@@ -141,8 +141,8 @@ Initialize object
 cnn = pycnn()
 
 # object variables: 
-# m: width of the image (number of columns)
-# n: height of image (number of rows)
+# _width : width of the image (number of columns)
+# _height : height of image (number of rows)
 ```
 
 ```python
