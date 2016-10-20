@@ -79,20 +79,6 @@ class pycnn(object):
         dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
         return dx.reshape(self.m * self.n)
 
-    def f_old(self, x, t, Ib, Bu, tempA):
-        """Computes the derivative of x at t.
-
-        Args:
-            x: The input.
-            Ib (float): System bias.
-            Bu: Convolution of control template with input.
-            tempA (:obj:`list` of :obj:`list`of :obj:`float`): Feedback
-                template.
-        """
-        x = x.reshape((self.n, self.m))
-        dx = -x + Ib + Bu + sig.convolve2d(self.cnn(x), tempA, 'same')
-        return dx.reshape(self.m * self.n)
-
     def cnn(self, x):
         """Piece-wise linear sigmoid function.
 
@@ -151,7 +137,7 @@ class pycnn(object):
         z0 = z0.flatten()
         t_final = t.max()
         t_initial = t.min()
-        dt = t[1]-t[0]
+        dt = t[1] - t[0]
         ode = sint.ode(self.f) \
             .set_integrator("vode") \
             .set_initial_value(z0, t_initial) \
