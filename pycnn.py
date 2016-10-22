@@ -139,7 +139,7 @@ class pycnn(object):
         t_initial = t.min()
         dt = t[1] - t[0]
         ode = sint.ode(self.f) \
-            .set_integrator("vode") \
+            .set_integrator('vode') \
             .set_initial_value(z0, t_initial) \
             .set_f_params(Ib, Bu, tempA)
         while ode.successful() and ode.t < t_final:
