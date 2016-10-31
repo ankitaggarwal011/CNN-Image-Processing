@@ -40,7 +40,7 @@ SUPPORTED_FILETYPES = (
 warnings.filterwarnings('ignore')  # Ignore trivial warnings
 
 
-class pycnn(object):
+class Pycnn(object):
     """Image Processing with Cellular Neural Networks (CNN).
 
     Cellular Neural Networks (CNN) are a parallel computing paradigm that was
@@ -111,7 +111,7 @@ class pycnn(object):
             )
 
     # tempA: feedback template, tempB: control template
-    def imageprocessing(self, inputlocation, outputlocation,
+    def imageProcessing(self, inputlocation, outputlocation,
                         tempA, tempB, initialcondition, Ib, t):
         """Process the image with the input arguments.
 
@@ -161,7 +161,7 @@ class pycnn(object):
         l.save(outputlocation)
 
     # general image processing for given templates
-    def generaltemplates(self,
+    def generalTemplates(self,
                          name='Image processing',
                          inputlocation='',
                          outputlocation='output.png',
@@ -202,7 +202,7 @@ class pycnn(object):
         print('Processing on image %s is complete' % (inputlocation))
         print('Result is saved at %s.\n' % (outputlocation))
 
-    def edgedetection(self, inputlocation='', outputlocation='output.png'):
+    def edgeDetection(self, inputlocation='', outputlocation='output.png'):
         """Performs Edge Detection on the input image.
 
         The output is a binary image showing all edges of the input image in
@@ -244,7 +244,7 @@ class pycnn(object):
             Ib,
             t)
 
-    def grayscaleedgedetection(self, inputlocation='',
+    def graycaleEdgeDetection(self, inputlocation='',
                                outputlocation='output.png'):
         """Performs Gray-scale Edge Detection on the input image.
 
@@ -284,7 +284,7 @@ class pycnn(object):
             Ib,
             t)
 
-    def cornerdetection(self, inputlocation='', outputlocation='output.png'):
+    def cornerDetection(self, inputlocation='', outputlocation='output.png'):
         """Performs Corner Detection on the input image.
 
         The output is a binary image where black pixels represent the convex
@@ -323,7 +323,7 @@ class pycnn(object):
             Ib,
             t)
 
-    def diagonallinedetection(self, inputlocation='',
+    def diagonalLineDetection(self, inputlocation='',
                               outputlocation='output.png'):
         """Performs Diagonal Line-Detection on the input image.
 
@@ -399,7 +399,7 @@ class pycnn(object):
             Ib,
             t)
 
-    def optimaledgedetection(self, inputlocation='',
+    def optimalEdgeDetection(self, inputlocation='',
                              outputlocation='output.png'):
         """Performs Optimal Edge Detection on the input image.
 
