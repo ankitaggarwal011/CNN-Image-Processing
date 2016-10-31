@@ -3,7 +3,7 @@ import unittest
 import tempfile
 import shutil
 
-from pycnn import pycnn
+from PyCNN import PyCNN
 
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.join(os.path.dirname(__file__)),
@@ -15,7 +15,7 @@ class TestMiscFunctions(unittest.TestCase):
 
     def setUp(self):
         self.tempdir = tempfile.mkdtemp()
-        self.cnn = pycnn()
+        self.cnn = PyCNN()
         self.exits_file_name = os.path.join(self.tempdir, 'exist.bmp')
         open(self.exits_file_name, 'w').close()
         self.not_supported_file = os.path.join(self.tempdir, 'exist.jp2')

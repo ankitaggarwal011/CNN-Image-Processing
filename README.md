@@ -44,9 +44,9 @@ $ python example.py
 #### OR
 
 ```python
-from pycnn import pycnn
+from PyCNN import PyCNN
 
-cnn = pycnn()
+cnn = PyCNN()
 ```
 
 **Input:**
@@ -58,7 +58,7 @@ cnn = pycnn()
 **Edge Detection:**
 
 ```python
-cnn.edgedetection('images/input1.bmp', 'images/output1.png')
+cnn.edgeDetection('images/input1.bmp', 'images/output1.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output1.png)
@@ -66,7 +66,7 @@ cnn.edgedetection('images/input1.bmp', 'images/output1.png')
 **Grayscale Edge Detection**
 
 ```python
-cnn.grayscaleedgedetection('images/input1.bmp', 'images/output2.png')
+cnn.grayScaleEdgeDetection('images/input1.bmp', 'images/output2.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output2.png)
@@ -74,7 +74,7 @@ cnn.grayscaleedgedetection('images/input1.bmp', 'images/output2.png')
 **Corner Detection:**
 
 ```python
-cnn.cornerdetection('images/input1.bmp', 'images/output3.png')
+cnn.cornerDetection('images/input1.bmp', 'images/output3.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output3.png)
@@ -82,7 +82,7 @@ cnn.cornerdetection('images/input1.bmp', 'images/output3.png')
 **Diagonal line Detection:**
 
 ```python
-cnn.diagonallinedetection('images/input1.bmp', 'images/output4.png')
+cnn.diagonalLineDetection('images/input1.bmp', 'images/output4.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output4.png)
@@ -98,7 +98,7 @@ cnn.inversion('images/input1.bmp', 'images/output5.png')
 **Optimal Edge Detection:**
 
 ```python
-cnn.optimaledgedetection('images/input3.bmp', 'images/output6.png')
+cnn.optimalEdgeDetection('images/input3.bmp', 'images/output6.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/output6.png)
@@ -112,9 +112,9 @@ $ python example_lenna.py
 #### OR
 
 ```python
-from pycnn import pycnn
+from PyCNN import PyCNN
 
-cnn = pycnn()
+cnn = PyCNN()
 ```
 
 **Input:**
@@ -124,7 +124,7 @@ cnn = pycnn()
 **Edge Detection:**
 
 ```python
-cnn.edgedetection('images/lenna.gif', 'images/lenna_edge.png')
+cnn.edgeDetection('images/lenna.gif', 'images/lenna_edge.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/lenna_edge.png)
@@ -132,7 +132,7 @@ cnn.edgedetection('images/lenna.gif', 'images/lenna_edge.png')
 **Diagonal line Detection:**
 
 ```python
-cnn.diagonallinedetection('images/lenna.gif', 'images/lenna_diagonal.png')
+cnn.diagonalLineDetection('images/lenna.gif', 'images/lenna_diagonal.png')
 ```
 
 ![](https://raw.githubusercontent.com/ankitaggarwal011/PyCNN/master/images/lenna_diagonal.png)
@@ -142,13 +142,13 @@ cnn.diagonallinedetection('images/lenna.gif', 'images/lenna_diagonal.png')
 Import module
 
 ```python
-from pycnn import pycnn
+from PyCNN import PyCNN
 ```
 
 Initialize object
 
 ```python
-cnn = pycnn()
+cnn = PyCNN()
 
 # object variables: 
 # m: width of the image (number of columns)
@@ -157,11 +157,11 @@ cnn = pycnn()
 
 ```python
 # name: name of image processing method (say, Edge detection); type: string
-# inputimagelocation: location of the input image; type: string.
-# outputimagelocation: location of the output image; type: string.
+# inputImageLocation: location of the input image; type: string.
+# outputImageLocation: location of the output image; type: string.
 # tempA_A: feedback template; type: n x n list, e.g. 3 x 3, 5 x 5.
 # tempB_B: control template; type: n x n list, e.g. 3 x 3, 5 x 5.
-# initialcondition: initial condition, type: float.
+# initialCondition: initial condition, type: float.
 # Ib_b: bias, type: float.
 # t: time points for integration, type: ndarray. 
   # Note: Some image processing methods might need more time point samples than default.
@@ -172,44 +172,44 @@ cnn = pycnn()
 General image processing
 
 ```python
-cnn.generaltemplates(name, inputimagelocation, outputimagelocation, tempA_A, tempB_B, 
-                      initialcondition, Ib_b, t)
+cnn.generalTemplates(name, inputImageLocation, outputImageLocation, tempA_A, tempB_B, 
+                      initialCondition, Ib_b, t)
 ```
 
 Edge detection
 
 ```python
-cnn.edgedetection(inputimagelocation, outputimagelocation)
+cnn.edgeDetection(inputImageLocation, outputImageLocation)
 ```
 
 Grayscale edge detection
 
 ```python
-cnn.grayscaleedgedetection(inputimagelocation, outputimagelocation)
+cnn.grayScaleEdgeDetection(inputImageLocation, outputImageLocation)
 ```
 
 Corner detection
 
 ```python
-cnn.cornerdetection(inputimagelocation, outputimagelocation)
+cnn.cornerDetection(inputImageLocation, outputImageLocation)
 ```
 
 Diagonal line detection
 
 ```python
-cnn.diagonallinedetection(inputimagelocation, outputimagelocation)
+cnn.diagonalLineDetection(inputImageLocation, outputImageLocation)
 ```
 
 Inversion (Login NOT)
 
 ```python
-cnn.inversion(inputimagelocation, outputimagelocation)
+cnn.inversion(inputImageLocation, outputImageLocation)
 ```
 
 Optimal Edge Detection
 
 ```python
-cnn.optimaledgedetection(inputimagelocation, outputimagelocation)
+cnn.optimalEdgeDetection(inputImageLocation, outputImageLocation)
 ```
 
 ## License
