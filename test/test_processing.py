@@ -3,7 +3,7 @@ import tempfile
 import unittest
 import filecmp
 
-from PyCNN import PyCNN
+from pycnn import PyCNN
 
 IMAGE_DIR = os.path.abspath(os.path.join(
     os.path.join(os.path.dirname(__file__)),

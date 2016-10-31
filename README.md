@@ -44,7 +44,7 @@ $ python example.py
 #### OR
 
 ```python
-from PyCNN import PyCNN
+from pycnn import PyCNN
 
 cnn = PyCNN()
 ```
@@ -112,7 +112,7 @@ $ python example_lenna.py
 #### OR
 
 ```python
-from PyCNN import PyCNN
+from pycnn import PyCNN
 
 cnn = PyCNN()
 ```
@@ -142,7 +142,7 @@ cnn.diagonalLineDetection('images/lenna.gif', 'images/lenna_diagonal.png')
 Import module
 
 ```python
-from PyCNN import PyCNN
+from pycnn import PyCNN
 ```
 
 Initialize object

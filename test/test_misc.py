@@ -3,7 +3,7 @@ import unittest
 import tempfile
 import shutil
 
-from PyCNN import PyCNN
+from pycnn import PyCNN
 
 BASE_DIR = os.path.abspath(os.path.join(
     os.path.join(os.path.dirname(__file__)),

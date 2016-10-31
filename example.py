@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from PyCNN import PyCNN
+from pycnn import PyCNN
 
 # Initialize object
 cnn = PyCNN()
