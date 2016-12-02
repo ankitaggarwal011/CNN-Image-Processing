@@ -1,0 +1,66 @@
+CONTRIBUTING GUIDE
+
+TL;DR 
+1.) Pick an issue from the "Issues" tab or submit a new issue; 
+2.) Fork the master branch; 
+3.) Make your improvements; 
+4.) Commit your changes; 
+5.) Submit a pull request; 
+6.) Wait for your request to be reviewed by the project manager.
+
+HOW TO CONTRIBUTE
+
+This project welcomes contributions from people who would like to improve the project's documentation, add new methods and features or improve the performance of the program.
+
+Contributors are encouraged to follow the normal Github contribution workflow (https://guides.github.com/activities/contributing-to-open-source/).  This workflow traditionally involves you creating a fork or branch of the master file.  After this initial step, then you'll make your improvements, commit your changes and submit a pull request to the project manager. The project manager will then review your proposed changes or additions and will either accept them, discuss them with you or reject them.
+
+Please don't spam this project (or any others) with frivolous, insincere or trivial changes for Hacktoberfest or any other promotions.  We rely on public contributions.  Reviewing spam contributions wastes time that could be productively spent on improving this project or surfing the internet.
+
+OVERVIEW OF CODE STRUCTURE AND API
+
+Coming soon.
+
+CODING PRACTICES
+
+Naming things (variables, files, classes, etc.) consistently and intuitively is one of the hardest problems in computer science. To make it easier, follow these conventions:
+
+    Always proceed from more general to more specific. For example, widget-skinny is better than skinny-widget.
+    Strive for parallelism. If you have a begin() function, then have an end() function (not stop() or done()).
+    Group related names with common prefixes, e.g. search_query and search_address.
+    Prefer more specific terms to more vague ones. If it's an address, call it "address," not location.
+    When a function operates on a variable, their naming should be consistent. If working with updates then process_updates(), don't process_changes().
+    Maintain naming conventions between lists and their iterators: for update in updates, not for record in updates.
+
+Prefer...	  to...
+create	    insert, add, new
+update	    change, edit
+delete	    remove, purge
+setup	      init
+make	      build, generate
+wrapper	    wrap
+render	    draw
+
+(Note: sometimes these words don't mean the same thing, but when they do, use the former.)
+Version control
+
+Development of major features should happen on separate branches which periodically merge from master until development of the feature is complete.
+
+A stable branch should always be present and should merge from master, only when deploying to production.
+
+Don't store binary files (comps, databases) in the repository.
+
+If a binary object needs to be shared then store it in Dropbox or on S3. If it is part of the setup process (e.g. a database backup) then use fabric commands to read and write it.
+
+Never, ever store passwords, keys or credentials in any repository. (Use environment variables instead.)
+    
+Quality matters.
+
+Keep lean dependencies.  The old adage "don't reinvent the wheel" doesn't apply when the wheel comes attached to a locomotive engine.
+
+Don't do hard things, do easy things.  Simple is better than complex.  Complex is better than complicated.  Flat is better than nested.  Readability counts.  If the implementation is hard to explain, it's a bad idea.  If the implementation is easy to explain, it may be a good idea.
+
+
+GUIDE TO ADD NEW IMAGE PROCESSING METHODS
+
+Coming soon.
+
